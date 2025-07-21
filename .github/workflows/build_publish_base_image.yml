@@ -73,6 +73,7 @@ jobs:
         with:
           context: .
           file: Dockerfile
+          platforms: linux/amd64
           push: true
           tags: |
             ghcr.io/mikrowerk/odoo-17-official-image:latest

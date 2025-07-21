@@ -1,6 +1,6 @@
 # Copyright Gammadata GmbH. All Rights Reserved.
 # SPDX-License-Identifier: APACHE-2.0
-FROM ubuntu:jammy
+FROM odoo:17.0-20250710
 
 ARG ADDON_PATH="/mnt/extra-addons"
 

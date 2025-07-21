@@ -21,6 +21,7 @@ permissions:
 
 jobs:
   build-push-odoo-17-official-image:
+    environment: github-build
     runs-on: ubuntu-latest
 
     permissions:

@@ -6,7 +6,7 @@ ARG ADDON_PATH="/mnt/extra-addons"
 
 # install additional python requirements
 COPY additional-requirements.txt ${ADDON_PATH}/additional-requirements.txt
-RUN sudo apt-get update
+RUN sudo apt-get update -y
 RUN sudo apt-get install -y build-essential
 RUN sudo apt-get install -y  libcairo2-dev
 RUN sudo apt-get install -y  pkg-config

@@ -1,0 +1,9 @@
+# Additional requirement for TOM-2.0
+
+factur-x==3.6
+pypdf==5.1.0
+schwifty==2025.1.0
+mikrowerk-edi-invoicing
+Unidecode
+meson
+rlPyCairo

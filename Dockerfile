@@ -4,8 +4,8 @@ FROM odoo:17.0-20250710
 USER root
 ARG ADDON_PATH="/mnt/extra-addons"
 
-RUN apt-get update -y && \
-    apt-get install -y build-essential && \
+RUN apt-get update -y
+RUN apt-get install -y build-essential && \
     apt-get install -y  libcairo2-dev && \
     apt-get install -y  pkg-config && \
     apt-get install -y  python3-dev

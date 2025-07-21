@@ -6,4 +6,5 @@ PyPDF2>=2.12.1
 schwifty==2025.1.0
 mikrowerk-edi-invoicing
 Unidecode
+meson
 rlPyCairo

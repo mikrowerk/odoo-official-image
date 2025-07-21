@@ -12,6 +12,7 @@ RUN apt-get install -y build-essential && \
 
 # install additional python requirements
 COPY additional-requirements.txt ${ADDON_PATH}/additional-requirements.txt
+RUN pip install --upgrade pip
 RUN echo "------------- python module lib before install --------------" && \
     pip3 list
 RUN pip3 install -r ${ADDON_PATH}/additional-requirements.txt && \

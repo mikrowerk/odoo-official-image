@@ -7,8 +7,7 @@ ARG ADDON_PATH="/mnt/extra-addons"
 # install additional python requirements
 COPY additional-requirements.txt ${ADDON_PATH}/additional-requirements.txt
 RUN apt update && \
-    DEBIAN_FRONTEND=noninteractive \
-    apt-get install -y --no-install-recommends build-essential libcairo2-dev pkg-config python3-dev
+    apt install -y --no-install-recommends build-essential libcairo2-dev pkg-config python3-dev
 RUN pip3 install --upgrade pip && \
     echo "------------- python module lib before install --------------" &&\
     pip3 list && \

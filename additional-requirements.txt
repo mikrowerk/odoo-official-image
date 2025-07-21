@@ -2,7 +2,6 @@
 
 factur-x==3.6
 pypdf==5.1.0
-PyPDF2>=2.12.1
 schwifty==2025.1.0
 mikrowerk-edi-invoicing
 Unidecode

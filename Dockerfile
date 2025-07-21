@@ -12,11 +12,10 @@ RUN apt-get update -y && \
 
 # install additional python requirements
 COPY additional-requirements.txt ${ADDON_PATH}/additional-requirements.txt
-RUN pip3 install --upgrade pip && \
-    echo "------------- python module lib before install --------------" &&\
-    pip3 list && \
-    pip3 install -r ${ADDON_PATH}/additional-requirements.txt && \
-    echo "------------- python module lib after install --------------" &&\
+RUN echo "------------- python module lib before install --------------" && \
+    pip3 list
+RUN pip3 install -r ${ADDON_PATH}/additional-requirements.txt && \
+    echo "------------- python module lib after install --------------" && \
     pip3 list
 
 USER odoo

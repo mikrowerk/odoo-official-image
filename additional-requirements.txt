@@ -3,7 +3,7 @@
 # factur-x==3.6
 # pypdf==5.1.0
 # schwifty==2025.1.0
-mikrowerk-edi-invoicing >= >= 0.6.5
+mikrowerk-edi-invoicing >= 0.6.5
 google-genai
 thefuzz
 # Unidecode

@@ -1,6 +1,7 @@
 # Copyright Gammadata GmbH. All Rights Reserved.
 # SPDX-License-Identifier: APACHE-2.0
-FROM odoo:17.0-20250710
+# FROM odoo:17.0-20250710
+FROM odoo:17.0-latest
 USER root
 ARG ADDON_PATH="/mnt/extra-addons"
 
@@ -15,6 +16,7 @@ COPY additional-requirements.txt /tmp/additional-requirements.txt
 RUN pip install --upgrade pip && \
     echo "------------- python module lib before install --------------" && \
     pip3 list
+RUN apt-get remove python3-pypdf2
 RUN pip3 install -r /tmp/additional-requirements.txt && \
     echo "------------- python module lib after install --------------" && \
     pip3 list && \

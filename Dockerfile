@@ -14,7 +14,8 @@ RUN apt-get install -y build-essential && \
 RUN cat /etc/passwd && \
     cat /etc/group
 
-
+USER root
+COPY additional-requirements.txt /tmp/additional-requirements.txt
 RUN pip install --upgrade pip && \
     echo "------------- python module lib before install --------------" && \
     which pip3 && \
@@ -23,8 +24,8 @@ RUN pip install --upgrade pip && \
 # install additional-requirements in user space to avoid conflicts with deb packages
 USER odoo
 # install additional python requirements
-COPY additional-requirements.txt /tmp/additional-requirements.txt
-RUN pip3 install --user -r /tmp/additional-requirements.txt && \
+COPY additional-user-requirements.txt /tmp/additional-user-requirements.txt
+RUN pip3 install --user -r /tmp/additional-user-requirements.txt && \
     echo "------------- python module lib after install --------------" && \
     pip3 list
 

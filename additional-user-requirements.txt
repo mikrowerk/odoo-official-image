@@ -1,0 +1,4 @@
+# Additional user requirement for TOM-2.0, to avoid conflicts
+
+PyPDF2==2.12.1
+

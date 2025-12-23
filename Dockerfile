@@ -4,6 +4,7 @@ FROM odoo:17.0-20250710
 # FROM odoo:17.0-latest
 USER root
 ARG ADDON_PATH="/mnt/extra-addons"
+ARG ODOO_ID=1111
 
 RUN apt-get update -y
 RUN apt-get install -y build-essential && \

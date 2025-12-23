@@ -16,7 +16,8 @@ COPY additional-requirements.txt /tmp/additional-requirements.txt
 RUN pip install --upgrade pip && \
     echo "------------- python module lib before install --------------" && \
     pip3 list
-RUN apt-get -y remove python3-pypdf2
+RUN apt-get -y upgrade python3-pypdf2 && \
+    apt list --installed
 RUN pip3 install -r /tmp/additional-requirements.txt && \
     echo "------------- python module lib after install --------------" && \
     pip3 list && \

@@ -1,6 +1,6 @@
 # Copyright Gammadata GmbH. All Rights Reserved.
 # SPDX-License-Identifier: APACHE-2.0
-FROM odoo:17.0-20250710
+FROM odoo:17.0-20251208
 # FROM odoo:17.0-latest
 USER root
 ARG ADDON_PATH="/mnt/extra-addons"
@@ -11,19 +11,20 @@ RUN apt-get install -y build-essential && \
     apt-get install -y  pkg-config && \
     apt-get install -y  python3-dev
 
-# install additional python requirements
-COPY additional-requirements.txt /tmp/additional-requirements.txt
-RUN pip install --upgrade pip && \
-    echo "------------- python module lib before install --------------" && \
-    pip3 list
-
-RUN pip3 install -r /tmp/additional-requirements.txt && \
-    echo "------------- python module lib after install --------------" && \
-    pip3 list && \
-    which pip3
-
 RUN cat /etc/passwd && \
     cat /etc/group
 
+
+RUN pip install --upgrade pip && \
+    echo "------------- python module lib before install --------------" && \
+    which pip3 && \
+    pip3 list
+
+# install additional-requirements in user space to avoid conflicts with deb packages
 USER odoo
-RUN pip3 install --user PyPDF2==2.12.1
+# install additional python requirements
+COPY additional-requirements.txt /tmp/additional-requirements.txt
+RUN pip3 install --user -r /tmp/additional-requirements.txt && \
+    echo "------------- python module lib after install --------------" && \
+    pip3 list
+

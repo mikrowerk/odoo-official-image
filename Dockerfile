@@ -4,7 +4,6 @@ FROM odoo:17.0-20250710
 # FROM odoo:17.0-latest
 USER root
 ARG ADDON_PATH="/mnt/extra-addons"
-ARG ODOO_ID=1111
 
 RUN apt-get update -y
 RUN apt-get install -y build-essential && \
@@ -23,8 +22,8 @@ RUN pip3 install -r /tmp/additional-requirements.txt && \
     pip3 list && \
     which pip3
 
-RUN groupadd -g ${ODOO_ID} odoo && \
-    useradd -u ${ODOO_ID} -g odoo -m -s /bin/false odoo
+RUN cat /etc/passwd && \
+    cat /etc/group
 
 USER odoo
 RUN pip3 install --user PyPDF2==2.12.1

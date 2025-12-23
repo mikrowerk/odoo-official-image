@@ -16,11 +16,14 @@ COPY additional-requirements.txt /tmp/additional-requirements.txt
 RUN pip install --upgrade pip && \
     echo "------------- python module lib before install --------------" && \
     pip3 list
-RUN apt-get -y upgrade python3-pypdf2 && \
-    apt list --installed
+
 RUN pip3 install -r /tmp/additional-requirements.txt && \
     echo "------------- python module lib after install --------------" && \
     pip3 list && \
     which pip3
 
+RUN groupadd -g ${ODOO_ID} odoo && \
+    useradd -u ${ODOO_ID} -g odoo -m -s /bin/false odoo
+
 USER odoo
+RUN pip3 install --user PyPDF2==2.12.1

@@ -18,16 +18,9 @@ RUN cat /etc/passwd && \
     cat /etc/group
 
 COPY additional-requirements-18.txt /tmp/additional-requirements.txt
-RUN pip3 install --upgrade pip3 && \
-    echo "------------- python module lib before install --------------" && \
+RUN echo "------------- python module lib before install --------------" && \
     which pip3 && \
-    pip3 list
+    pip3 list \
+RUN pip3 install -r /tmp/additional-requirements.txt
 
-# install additional-requirements in user space to avoid conflicts with deb packages
 USER odoo
-# install additional python requirements
-#COPY additional-user-requirements.txt /tmp/additional-user-requirements.txt
-#RUN pip3 install --user -r /tmp/additional-user-requirements.txt && \
-#    echo "------------- python module lib after install --------------" && \
-#    pip3 list
-

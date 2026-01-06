@@ -1,0 +1,33 @@
+# Copyright Gammadata GmbH. All Rights Reserved.
+# SPDX-License-Identifier: APACHE-2.0
+ENV ODOO_VERSION 18.0
+ENV ODOO_RELEASE=20251222
+
+FROM odoo:${ODOO_VERSION}-${ODOO_RELEASE}
+
+USER root
+ARG ADDON_PATH="/mnt/extra-addons"
+
+RUN apt-get update -y
+RUN apt-get install -y build-essential && \
+    apt-get install -y  libcairo2-dev && \
+    apt-get install -y  pkg-config && \
+    apt-get install -y  python3-dev
+
+RUN cat /etc/passwd && \
+    cat /etc/group
+
+COPY additional-requirements-18.txt /tmp/additional-requirements.txt
+RUN pip install --upgrade pip && \
+    echo "------------- python module lib before install --------------" && \
+    which pip3 && \
+    pip3 list
+
+# install additional-requirements in user space to avoid conflicts with deb packages
+USER odoo
+# install additional python requirements
+#COPY additional-user-requirements.txt /tmp/additional-user-requirements.txt
+#RUN pip3 install --user -r /tmp/additional-user-requirements.txt && \
+#    echo "------------- python module lib after install --------------" && \
+#    pip3 list
+

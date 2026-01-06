@@ -11,15 +11,16 @@ name: build & push odoo-17-official-image for TOM
 on:
   push:
     branches:
-      - 'main-17'
-      - 'releases/17**'
-      - 'rc/17**'
+      - 'main/18**'
+      - 'releases/18**'
+      - 'rc/18**'
+      - 'feature/odoo-18-tom-image'
 
 permissions:
   contents: read
 
 jobs:
-  build-push-odoo-17-official-image:
+  build-push-odoo-18-official-image:
     environment: github-build
     runs-on: ubuntu-latest
 
@@ -58,22 +59,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GIT_HUB_TOKEN }}
 
-#        - name: Extract metadata (tags, labels) for Docker
-#          id: meta
-#          uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
-#          with:
-#            images: |
-#              my-docker-hub-namespace/my-docker-hub-repository
-#              ghcr.io/${{ github.repository }}
-
       - name: Build and push Docker images
         id: push
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
         with:
           context: .
-          file: Dockerfile
+          file: Dockerfile-18
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/mikrowerk/odoo-17-official-image:latest
-            ghcr.io/mikrowerk/odoo-17-official-image:${{ steps.commit.outputs.short }}
+            ghcr.io/mikrowerk/odoo-18-official-image:latest
+            ghcr.io/mikrowerk/odoo-18-official-image:${{ steps.commit.outputs.short }}

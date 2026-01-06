@@ -1,6 +1,6 @@
 # Copyright Gammadata GmbH. All Rights Reserved.
 # SPDX-License-Identifier: APACHE-2.0
-ENV ODOO_VERSION 18.0
+ENV ODOO_VERSION=18.0
 ENV ODOO_RELEASE=20251222
 
 FROM odoo:${ODOO_VERSION}-${ODOO_RELEASE}

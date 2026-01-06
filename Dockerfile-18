@@ -22,6 +22,6 @@ COPY additional-requirements-18.txt /tmp/additional-requirements.txt
 RUN echo "------------- python module lib before install --------------" && \
     which pip3 && \
     pip3 list
-RUN python3 -m pip3 config set global.break-system-packages true
+RUN python3 -m pip config set global.break-system-packages true
 RUN pip3 install -r /tmp/additional-requirements.txt
 

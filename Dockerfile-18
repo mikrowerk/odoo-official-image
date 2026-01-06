@@ -17,10 +17,10 @@ RUN apt-get install -y build-essential && \
 RUN cat /etc/passwd && \
     cat /etc/group
 
+USER odoo
 COPY additional-requirements-18.txt /tmp/additional-requirements.txt
 RUN echo "------------- python module lib before install --------------" && \
     which pip3 && \
     pip3 list
-RUN pip3 install -r /tmp/additional-requirements.txt
+RUN pip3 install --user -r /tmp/additional-requirements.txt
 
-USER odoo

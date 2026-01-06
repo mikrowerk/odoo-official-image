@@ -18,7 +18,7 @@ RUN cat /etc/passwd && \
     cat /etc/group
 
 COPY additional-requirements-18.txt /tmp/additional-requirements.txt
-RUN pip install --upgrade pip && \
+RUN pip3 install --upgrade pip3 && \
     echo "------------- python module lib before install --------------" && \
     which pip3 && \
     pip3 list

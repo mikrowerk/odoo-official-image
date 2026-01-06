@@ -6,7 +6,7 @@ lxml[html_clean]>=6.0.2
 schwifty==2025.1.0
 Unidecode
 rlPyCairo
-mikrowerk_edi_invoicing >= 0.6.6
+mikrowerk_edi_invoicing
 google-genai
 thefuzz
 

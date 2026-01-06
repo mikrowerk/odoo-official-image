@@ -24,4 +24,6 @@ RUN echo "------------- python module lib before install --------------" && \
     pip3 list
 RUN python3 -m pip config set global.break-system-packages true
 RUN pip3 install -r /tmp/additional-requirements.txt
+RUN echo "------------- python module lib after install additional-requirements.txt --------------" && \
+    pip3 list
 

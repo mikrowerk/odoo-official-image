@@ -9,4 +9,6 @@ schwifty==2025.1.0
 mikrowerk_edi_invoicing
 google-genai
 thefuzz
+premailer
+extract_msg
 

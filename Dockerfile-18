@@ -2,11 +2,16 @@
 # SPDX-License-Identifier: APACHE-2.0
 ARG ODOO_VERSION=18.0
 ARG ODOO_RELEASE=20251222
+ARG ADDON_PATH="/mnt/extra-addons"
 
 FROM odoo:${ODOO_VERSION}-${ODOO_RELEASE}
 
 USER root
-ARG ADDON_PATH="/mnt/extra-addons"
+RUN groupmod -g 1100 odoo && \
+    usermod -u 1100 -g 1100 odoo && \
+    cat /etc/passwd && \
+    cat /etc/group
+
 
 RUN apt-get update -y
 RUN apt-get install -y build-essential && \
@@ -25,5 +30,6 @@ RUN echo "------------- python module lib before install --------------" && \
 RUN python3 -m pip config set global.break-system-packages true && \
     pip3 install --no-cache-dir --ignore-installed -r /tmp/additional-requirements.txt
 
+RUN chown -R odoo:odoo /var/lib/odoo /etc/odoo /usr/lib/python3/dist-packages/odoo
 USER odoo
 RUN pip3 list

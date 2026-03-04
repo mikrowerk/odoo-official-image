@@ -11,4 +11,4 @@ google-genai
 thefuzz
 premailer
 extract_msg
-
+openupgradelib
